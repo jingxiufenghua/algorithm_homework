@@ -37,7 +37,7 @@ class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         dummyhead = ListNode(0)
         curr = dummyhead
-        heap =[MylistNode(i) for i in lists]
+        heap =[MylistNode(i) for i in lists if i]
         heapq.heapify(heap)
         while heap:
             i = heapq.heappop(heap).l
