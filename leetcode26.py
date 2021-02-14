@@ -13,3 +13,16 @@ nums = [1,2,2,2,3]
 solution = Solution()
 solution.removeDuplicates(nums)
 print(nums)
+
+#function2
+class Solution2:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        count = 0
+        for i in range(len(nums)):
+            if nums[count]!=nums[i]:
+                count += 1
+                nums[count] = nums[i]
+        return count+1
+
