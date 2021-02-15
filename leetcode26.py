@@ -13,7 +13,7 @@ nums = [1,2,2,2,3]
 solution = Solution()
 solution.removeDuplicates(nums)
 print(nums)
-
+# 腾讯面试题
 #function2
 class Solution2:
     def removeDuplicates(self, nums: List[int]) -> int:
