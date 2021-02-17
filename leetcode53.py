@@ -6,19 +6,7 @@ from typing import List
 #         :param nums:
 #         :return:
 #         """
-#         if not nums:return 0
-#
-#         def divide_two_part(nums:List[int]):
-#             pivot = len(nums)//2
-#             first_part = nums[:pivot]
-#             second_part = nums[pivot:]
-#             return first_part,second_part
-#
-#         def sub_sum(nums:List[int]):
-#             if len(nums)<=2:
-#                 return sum(nums)
-#             first_part,second_part = divide_two_part(nums)
-#             first_part_sum,second_part_sum = sub_sum(first_part),sub_sum(second_part)
+
 
 def divide_two_part(nums:List[int]):
     pivot = len(nums)//2
@@ -47,6 +35,15 @@ def sub_sum(nums:List[int],result=-2**31):
     else:
         result_list = []
     return  result,result_list
+
+
+def simple_solution(nums:List[int]):
+    if max(nums)<0:return max(nums)
+    local_max,global_max= 0,0
+    for num in nums:
+        local_max = max(0,local_max+num)
+        global_max = max(global_max,local_max)
+    return global_max
 
 nums = [-2,1,-3,4,-1,2,1,-5,4]
 result = sub_sum(nums)
