@@ -48,5 +48,5 @@ def simple_solution(nums:List[int]):
 nums = [-2,1,-3,4,-1,2,1,-5,4]
 result = sub_sum(nums)
 print(result)
-
+print(123>>1)
 
