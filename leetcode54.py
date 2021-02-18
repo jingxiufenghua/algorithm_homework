@@ -40,9 +40,9 @@ class Solution:
         # down_up_append(matrix,rows_list,lable)
 
         row = len(matrix)
-        col = len(matrix[0])
-        if row==0 or col==0:
+        if row==0 or len(matrix[0])==0:
             return []
+        col = len(matrix[0])
         res = matrix[0]
         if row>1:
             for i in range(1,row):
@@ -57,8 +57,6 @@ class Solution:
             t = matrix[k][1:-1]
             M.append(t)
         return res+self.spiralOrder(M)
-
-
 
 
 solution = Solution()
