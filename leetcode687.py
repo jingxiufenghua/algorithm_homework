@@ -21,4 +21,3 @@ class Solution:
             return max(left_arrow,right_arrow)
         longestUnivalue(root)
         return self.ans
-nums = [1,4,5,4,4,5]
