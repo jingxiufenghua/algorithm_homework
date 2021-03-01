@@ -14,9 +14,41 @@ class Solution:
                 ans += (r-l-1)*high
             stack.append(i)
         return ans
+# 动态规划
+    def trap2(self, height: List[int]) -> int:
+        n = len(height)
+        ans = 0
+        max_left,max_right = {},{}
+        max_left[0] = height[0]
+        max_right[n-1] = height[n-1]
+        for i in range(1,n):
+            max_left[i] = max(max_left[i-1],height[i])
+        for i in range(n-2,-1,-1):
+            max_right[i] = max(max_right[i+1],height[i])
+        for i in range(n):
+            ans+= min(max_left[i],max_right[i])-height[i]
+        return ans
+# 双指针法
+    def trap3(self, height: List[int]) -> int:
+        n = len(height)
+        ans = 0
+        left,right = 0,n-1
+        left_max,right_max = 0,0
+        while left<=right:
+            if left_max<right_max:
+                ans+=max(0,left_max-height[left])
+                left_max = max(left_max,height[left])
+                left +=1
+            else:
+                ans+= max(0,right_max-height[right])
+                right_max = max(right_max,height[right])
+                right-=1
+        return ans
+
 
 solution = Solution()
-# height = [0,1,0,2,1,0,1,3,2,1,2,1]
-height = [4,2,0,3,2,5]
-result = solution.trap(height)
+height = [0,1,0,2,1,0,1,3,2,1,2,1]
+# height = [4,2,0,3,2,5]
+# result = solution.trap(height)
+result = solution.trap3(height)
 print(result)
