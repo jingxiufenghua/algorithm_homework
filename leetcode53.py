@@ -37,13 +37,17 @@ def sub_sum(nums:List[int],result=-2**31):
     return  result,result_list
 
 
-def simple_solution(nums:List[int]):
-    if max(nums)<0:return max(nums)
-    local_max,global_max= 0,0
-    for num in nums:
-        local_max = max(0,local_max+num)
-        global_max = max(global_max,local_max)
-    return global_max
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        if max(nums)<0 : return max(nums)
+        max_pro = 0
+        sub_pro = 0
+        for price in nums:
+            sub_pro = max(sub_pro + price,0)
+            max_pro = max(sub_pro,max_pro)
+        return max_pro
+
 
 nums = [-2,1,-3,4,-1,2,1,-5,4]
 result = sub_sum(nums)
