@@ -131,6 +131,24 @@ class Solution:
         return nums
 
 
+class solution:
+    def topk(self, inputs, k):
+        import heapq
+        if inputs == None or len(inputs) < k or len(inputs) <= 0 or k <= 0:# 注意极限条件的确定
+            return []
+        output = []
+        for number in inputs:
+            if len(output) < k:
+                output.append(number)
+            else:
+                output = heapq.nlargest(k, output)
+                print(output)
+                if number >= output[-1]:
+                    output[-1] = number
+                else:
+                    continue
+        return output
+
 
 
 

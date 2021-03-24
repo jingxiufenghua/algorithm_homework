@@ -92,6 +92,24 @@ def get_user_hist_item_info_dict(all_click):
 # click_val/click_val_hist：验证集
 # val_ans/click_val_last：验证集最后一次点击作为答案
 # click_tst/click_tst_hist: 测试集 pd.read_csv(data_path+'testA_click_log.csv')
+from  typing import List
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        if not nums:return []
+        n = len(nums)
+        store = {}
+        for i in range(n):
+            if target-nums[i] in store:
+                return [store[target-nums[i]],i]
+            else:
+                store[nums[i]] = i
+        return []
+
+solution = Solution()
+nums = [2,7,11,15]
+result = solution.twoSum(nums,9)
+print(result)
+
 
 
 
