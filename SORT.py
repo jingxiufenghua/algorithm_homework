@@ -105,7 +105,6 @@ class Solution:
         for num in nums:
             bucket[num] += 1
         i = 0
-
         for j in range(len(bucket)):
             while bucket[j]>0:
                 nums[i] = j

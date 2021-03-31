@@ -92,26 +92,52 @@ def get_user_hist_item_info_dict(all_click):
 # click_val/click_val_hist：验证集
 # val_ans/click_val_last：验证集最后一次点击作为答案
 # click_tst/click_tst_hist: 测试集 pd.read_csv(data_path+'testA_click_log.csv')
-from  typing import List
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        if not nums:return []
-        n = len(nums)
-        store = {}
-        for i in range(n):
-            if target-nums[i] in store:
-                return [store[target-nums[i]],i]
-            else:
-                store[nums[i]] = i
-        return []
+
+# from  typing import List
+# class Solution:
+#     def twoSum(self, nums: List[int], target: int) -> List[int]:
+#         if not nums:return []
+#         n = len(nums)
+#         store = {}
+#         for i in range(n):
+#             if target-nums[i] in store:
+#                 return [store[target-nums[i]],i]
+#             else:
+#                 store[nums[i]] = i
+#         return []
 
 solution = Solution()
 nums = [2,7,11,15]
 result = solution.twoSum(nums,9)
 print(result)
 
+class Solution:
+    def bubbleSort(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        for i in range(n-1):
+            for j in range(len(nums)-i-1):
+                if nums[j]>nums[j+1]:
+                    nums[j],nums[j+1] = nums[j+1],nums[j]
+        return nums
 
+    def selectSort(self,nums: List[int]) -> List[int]:
+        n = len(nums)
+        for i in range(n-1):
+            minindex = i
+            for j in range(i+1,n):
+                if nums[j]<nums[minindex]:
+                    minindex = j
+            nums[i],nums[minindex] = nums[minindex],nums[i]
+        return nums
 
-
+    def insertionSort(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        for i in range(n-1):
+            curNum,preIndex = nums[i+1],i
+            while preIndex>=0 and curNum<nums[preIndex]:
+                nums[preIndex+1] = nums[preIndex]
+                preIndex -=1
+            nums[preIndex+1] = curNum
+        return nums
 
 
