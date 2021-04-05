@@ -93,7 +93,7 @@ def get_user_hist_item_info_dict(all_click):
 # val_ans/click_val_last：验证集最后一次点击作为答案
 # click_tst/click_tst_hist: 测试集 pd.read_csv(data_path+'testA_click_log.csv')
 
-# from  typing import List
+from  typing import List
 # class Solution:
 #     def twoSum(self, nums: List[int], target: int) -> List[int]:
 #         if not nums:return []
@@ -106,38 +106,147 @@ def get_user_hist_item_info_dict(all_click):
 #                 store[nums[i]] = i
 #         return []
 
-solution = Solution()
-nums = [2,7,11,15]
-result = solution.twoSum(nums,9)
-print(result)
+# solution = Solution()
+# nums = [2,7,11,15]
+# result = solution.twoSum(nums,9)
+# print(result)
+#
+# class Solution:
+#     def bubbleSort(self, nums: List[int]) -> List[int]:
+#         n = len(nums)
+#         for i in range(n-1):
+#             for j in range(len(nums)-i-1):
+#                 if nums[j]>nums[j+1]:
+#                     nums[j],nums[j+1] = nums[j+1],nums[j]
+#         return nums
+#
+#     def selectSort(self,nums: List[int]) -> List[int]:
+#         n = len(nums)
+#         for i in range(n-1):
+#             minindex = i
+#             for j in range(i+1,n):
+#                 if nums[j]<nums[minindex]:
+#                     minindex = j
+#             nums[i],nums[minindex] = nums[minindex],nums[i]
+#         return nums
+#
+#     def insertionSort(self, nums: List[int]) -> List[int]:
+#         n = len(nums)
+#         for i in range(n-1):
+#             curNum,preIndex = nums[i+1],i
+#             while preIndex>=0 and curNum<nums[preIndex]:
+#                 nums[preIndex+1] = nums[preIndex]
+#                 preIndex -=1
+#             nums[preIndex+1] = curNum
+#         return nums
+#
+#     def quickSort(self,nums:List[int]):
+#         n = len(nums)
+#         if n==1 :return nums
+#         pivot = nums[0]
+#         left = [nums[i] for i in range(1,n) if nums[i]<pivot]
+#         right= [nums[j] for j in range(1,n) if nums[j]>=pivot]
+#         return self.quickSort(left) + [pivot] + self.quickSort(right)
+#
+# import collections
+# class Solution:
+#     def levelOrder(self, root: TreeNode) -> List[List[int]]:
+#         queue = collections.deque()
+#         queue.append(root)
+#         res = []
+#         while queue:
+#             size = len(queue)
+#             level = []
+#             for _ in range(size):
+#                 cur = queue.popleft()
+#                 if not cur:
+#                     continue
+#                 level.append(cur.val)
+#                 queue.append(cur.left)
+#                 queue.append(cur.right)
+#             if level:
+#                 res.append(level)
+#         return res
 
-class Solution:
-    def bubbleSort(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        for i in range(n-1):
-            for j in range(len(nums)-i-1):
-                if nums[j]>nums[j+1]:
-                    nums[j],nums[j+1] = nums[j+1],nums[j]
-        return nums
+# 46
+# class Solution:
+#     def permute(self, nums: List[int]) -> List[List[int]]:
+#         def backtrack(first=0):
+#             if first==n:
+#                 res.append(nums[:])
+#             for i in range(first,n):
+#                 nums[first],nums[i] = nums[i],nums[first]
+#                 backtrack(first+1)
+#                 nums[i],nums[first] = nums[first],nums[i]
+#
+#         n = len(nums)
+#         res = []
+#         backtrack()
+#         return res
 
-    def selectSort(self,nums: List[int]) -> List[int]:
-        n = len(nums)
-        for i in range(n-1):
-            minindex = i
-            for j in range(i+1,n):
-                if nums[j]<nums[minindex]:
-                    minindex = j
-            nums[i],nums[minindex] = nums[minindex],nums[i]
-        return nums
+class LinkNode:
+    def __init__(self,key=0,value=0):
+        self.key = key
+        self.value = value
+        self.prev = None
+        self.next = None
 
-    def insertionSort(self, nums: List[int]) -> List[int]:
-        n = len(nums)
-        for i in range(n-1):
-            curNum,preIndex = nums[i+1],i
-            while preIndex>=0 and curNum<nums[preIndex]:
-                nums[preIndex+1] = nums[preIndex]
-                preIndex -=1
-            nums[preIndex+1] = curNum
-        return nums
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.cache = dict()
+        self.head = LinkNode()
+        self.tail = LinkNode()
+        self.head.next= self.tail
+        self.tail.prev = self.head
+        self.capacity = capacity
+        self.size = 0
+
+    def get(self, key: int) -> int:
+        if key not in self.cache:
+            return -1
+        node = self.cache[key]
+        self.moveToHead(node)
+        return node.value
 
 
+    def put(self, key: int, value: int) -> None:
+        if key not in self.cache:
+            node = LinkNode(key, value)
+            self.cache[key] = node
+            self.addToHead(node)
+            self.size+=1
+            if self.size>self.capacity:
+                removed = self.removeTail()
+                self.cache.pop(removed.key)
+                self.size-=1
+        else:
+            node = self.cache[key]
+            node.value = value
+            self.moveToHead(node)
+
+
+
+    def removeNode(self,node):
+        node.prev.next = node.next
+        node.next.prev = node.prev
+
+    def addToHead(self,node):
+        node.next = self.head.next
+        node.prev = self.head
+        self.head.next.prev = node
+        self.head.next = node
+
+    def moveToHead(self,node):
+        self.removeNode(node)
+        self.addToHead(node)
+
+    def removeTail(self):
+        node = self.tail.prev
+        self.removeNode(node)
+        return node
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)

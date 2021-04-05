@@ -32,24 +32,24 @@ while queue 不空：
     }
     level ++;
 """
-# class Solution:
-#     def levelOrder(self, root: TreeNode) -> List[List[int]]:
-#         queue = collections.deque()
-#         queue.append(root)
-#         res = []
-#         while queue:
-#             size = len(queue)
-#             level = []
-#             for _ in range(size):
-#                 cur = queue.popleft()
-#                 if not cur:
-#                     continue
-#                 level.append(cur.val)
-#                 queue.append(cur.left)
-#                 queue.append(cur.right)
-#             if level:
-#                 res.append(level)
-#         return res
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        queue = collections.deque()
+        queue.append(root)
+        res = []
+        while queue:
+            size = len(queue)
+            level = []
+            for _ in range(size):
+                cur = queue.popleft()
+                if not cur:
+                    continue
+                level.append(cur.val)
+                queue.append(cur.left)
+                queue.append(cur.right)
+            if level:
+                res.append(level)
+        return res
 """
 DFS
 本题使用 DFS 同样能做。由于题目要求每一层的节点都是从左到右遍历，因此递归时也要先递归左子树、再递归右子树。
@@ -72,7 +72,7 @@ class Solution(object):
         return res
 
     def level(self, root, level, res):
-        if not root: return
+        if not root: return []
         if len(res) == level: res.append([])
         res[level].append(root.val)
         if root.left: self.level(root.left, level + 1, res)
