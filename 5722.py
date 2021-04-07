@@ -76,8 +76,55 @@ from typing import List
 #         sum_diff = sum(diff)%(1e9+7)
 #         return sum_diff
 
+# 1688. 比赛中的配对次数
+# class Solution:
+#     def numberOfMatches(self, n: int) -> int:
+#         res = []
+#         while n>=2:
+#             rest = n%2
+#             res.append(n // 2)
+#             if rest==0:
+#                 n=n//2
+#             else:
+#                 n = n//2+1
+#         return sum(res)
+
+
+# 1689. 十-二进制数的最少数目
 class Solution:
-    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+    def minPartitions(self, n: str) -> int:
+        # nums = []
+        # another = [int(v) for v in n]
+        # temp = ""
+        # while len(another)>0:
+        #     for i in range(len(another)):
+        #         if another[i]>0:
+        #             temp = temp + "1"
+        #             another[i] =  another[i]-1
+        #         else:
+        #             temp = temp + "0"
+        #     nums.append(temp)
+        #     temp = ""
+        #
+        #     while len(another)>0:
+        #         if another[0]!=0:
+        #             break
+        #         another.remove(another[0])
+        # return len(nums)
+
+        return int(max(n))
+
+solution = Solution()
+str1 = "32"
+result = solution.minPartitions(str1)
+print(result)
+
+# 1690. 石子游戏 VII
+class Solution:
+    def stoneGameVII(self, stones: List[int]) -> int:
+
+
+
 
 
 

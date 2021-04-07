@@ -250,3 +250,34 @@ class LRUCache:
 # obj = LRUCache(capacity)
 # param_1 = obj.get(key)
 # obj.put(key,value)
+# jianzhi11
+class Solution:
+    def minArray(self, numbers: List[int]) -> int:
+        n = len(numbers)
+        if not numbers:return -1
+        left,right = 0,n-1
+        while left<right:
+            mid = left + (right-left)//2
+            if numbers[mid]>numbers[right]:
+                left = mid + 1
+            elif numbers[mid]<numbers[right]:
+                right = mid
+            else:
+                right-=1
+        return numbers[left]
+# jianzhi_offer_07
+    class Solution:
+        def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+            if len(preorder) == 0 or len(inorder) == 0: return None
+            root = TreeNode(preorder[0])
+            if len(preorder) == 1: return root
+            for i in range(len(inorder)):
+                if inorder[i] == root.val:
+                    left_tree_inorder = inorder[:i] if i > 0 else []
+                    right_tree_inorder = inorder[i + 1:] if i + 1 <= len(inorder) - 1 else []
+                    left_tree_preorder = preorder[1:len(left_tree_inorder) + 1] if len(left_tree_inorder) > 0 else []
+                    right_tree_preorder = preorder[len(left_tree_inorder) + 1:]
+                    break
+            root.left = self.buildTree(left_tree_preorder, left_tree_inorder)
+            root.right = self.buildTree(right_tree_preorder, right_tree_inorder)
+            return root
