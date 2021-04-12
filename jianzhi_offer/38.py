@@ -17,3 +17,7 @@ class Solution:
         dfs(0)
         return res
 
+solution = Solution()
+string = "aac"
+result = solution.permutation(string)
+print(result)

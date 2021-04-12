@@ -70,7 +70,7 @@ class Solution:
         res = []
         def dfs(x):
             if x == len(nums)-1:
-                res.append(nums)
+                res.append(nums[:])
                 return
             dic = set()
             for i in range(x,len(nums)):
