@@ -1,7 +1,9 @@
-from  typing import List
+from typing import List
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         row = len(matrix)
+        if row==0 or len(matrix[0])==0:
+            return []
         col = len(matrix[0])
         res = matrix[0]
         if row==0 or col == 0: return []
@@ -18,4 +20,26 @@ class Solution:
             t = matrix[k][1:-1]
             M.append(t)
         return res+self.spiralOrder(M)
+
+
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        row = len(matrix)
+        if row==0  or len(matrix[0])==0:
+            return []
+        col = len(matrix[0])
+        res = matrix[0]
+        if row>1:
+            for i in range(1,row):
+                res.append(matrix[i][col-1])
+            for j in range(col-2,-1,-1):
+                res.append(matrix[row-1][j])
+            if col>1:
+                for l in range(row-2,0,-1):
+                    res.append(matrix[l][0])
+        M = []
+        for k in range(1,row-1):
+            M.append(matrix[k][1:-1])
+        return res + self.spiralOrder(M)
+
 
