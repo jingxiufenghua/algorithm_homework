@@ -1,5 +1,5 @@
-刷题情况：
-![image](img/刷题情况.jpg)
+今日刷题情况：
+![image](img/shuati.jpg)
 
 目标：1500题，全站排名：500名以内   参加微软、google面试
 
