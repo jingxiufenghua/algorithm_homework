@@ -16,6 +16,6 @@
             res = max(res, right - left + 1) # 需要更新结果
             right += 1 # 移动右指针，去探索新的区间
         return res
-
-参考leetcode大佬：
-fuxuemingzhu
+滑动窗口中用到了左右两个指针，它们移动的思路是：以右指针作为驱动，拖着左指针向前走。右指针每次只移动一步，而左指针在内部 while 循环中每次可能移动多步。右指针是主动前移，探索未知的新区域；左指针是被迫移动，负责寻找满足题意的区间。
+作者：fuxuemingzhu
+来源：力扣（LeetCode）
