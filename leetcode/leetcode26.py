@@ -26,3 +26,16 @@ class Solution2:
                 nums[count] = nums[i]
         return count+1
 
+# 26. 删除有序数组中的重复项
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n == 0: return 0
+        if n == 1: return 1
+        nums.sort()
+        i = 0
+        while i < len(nums)-1:
+            while  i<len(nums) and nums[i]==nums[i+1]:
+                del nums[i+1]
+            i += 1
+        return len(nums)
