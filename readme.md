@@ -118,3 +118,4 @@ fighting！！！
         }
     }
 
+https://leetcode-cn.com/problems/range-sum-query-mutable/solution/xian-duan-shu-zu-shou-hui-tu-xiang-yi-qing-er-chu-/
