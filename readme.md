@@ -117,5 +117,12 @@ fighting！！！
             return query(r + 1) - query(l);
         }
     }
-
+线段树：
 https://leetcode-cn.com/problems/range-sum-query-mutable/solution/xian-duan-shu-zu-shou-hui-tu-xiang-yi-qing-er-chu-/
+
+4.23 日
+今天回顾一下前几天的题目，刷了一下每日一题
+
+368. 最大整除子集
+
+DP 算法有点弱，找个时间好好练练，团灭一波题

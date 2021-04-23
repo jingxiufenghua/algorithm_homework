@@ -10,7 +10,6 @@
 from typing import List
 from sortedcontainers import SortedList
 
-
 class Solution:
     def maxSumSubmatrix(self, matrix: List[List[int]], k: int) -> int:
         ans = float("-inf")
@@ -21,7 +20,6 @@ class Solution:
             for j in range(i, m):  # 枚举下边界
                 for c in range(n):
                     total[c] += matrix[j][c]  # 更新每列的元素和
-
                 totalSet = SortedList([0])
                 s = 0
                 for v in total:
@@ -32,3 +30,7 @@ class Solution:
                     totalSet.add(s)
         return ans
 
+solution = Solution()
+matrix = [[1,0,1],[0,-2,3]]
+result = solution.maxSumSubmatrix(matrix,2)
+print(result)
