@@ -11,5 +11,18 @@
 from typing import List
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
-        
+        self.hash_map = {}
+        def backtrack(nums:List[int],remains):
+            if remains==0:return 1
+            if remains in self.hash_map:
+                return self.hash_map.get(remains)
+            res = 0
+            for i in range(len(nums)):
+                if remains>=nums[i]:
+                    res += backtrack(nums,remains-nums[i])
+            self.hash_map[remains] = res
+            return res
+        return backtrack(nums,target)
+
+
 
