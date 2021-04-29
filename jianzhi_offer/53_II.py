@@ -17,12 +17,13 @@ class Solution:
         if nums[-1] != n: return n
         while left <= right:
             mid = (left+right)>>1
-            mid_nums = (nums[left]+nums[right])>>1
-            if nums[mid] == mid_nums:
+            if nums[mid]==mid:
                 left = mid + 1
-            elif nums[mid]>mid:
-                right = mid
             else:
+                right = mid-1
+        return left
+
+
 
 
 
