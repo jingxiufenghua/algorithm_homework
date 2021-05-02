@@ -143,3 +143,19 @@ Python，Java 等语言中的数字都是以 补码 形式存储的。但 Python
 4.29 
 青蛙过河 又是一道 DP题，今天有点晚了，明天起床再想dp方程。今天AC了10道题，明天起床加油。
 
+4.30 
+补码问题 https://cloud.tencent.com/developer/article/1658229
+res -= i << 31 就是简单的模拟补码
+
+5.2
+
+Python排序容器类型：sortedlist、sorteddict和Sorted Set
+
+https://www.5axxw.com/wiki/content/5nj8w4
+
+一定要好好读题！！！
+![image](img/丑数3.png)
+![image](img/超级丑数.png)
+
+另外1201丑数III，明显是878题的升级版，为什么878是困难，这道题是中等【手动狗头】
+

@@ -104,6 +104,7 @@ class Solution:
 #                         ans=max(ans,dp[i])
 #         #print(dp)
 #         return ans
+
 import itertools
 class Solution(object):
     def longestBeautifulSubstring(self, word):

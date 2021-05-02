@@ -1,24 +1,56 @@
-# 35. 搜索插入位置
-# 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
-# 你可以假设数组中无重复元素。
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+'''
+@Project ：algorithm_homework 
+@File    ：35.py
+@IDE     ：PyCharm 
+@Author  ：无名
+@Date    ：2021/5/1 16:10 
+'''
+# 剑指 Offer 35. 复杂链表的复制
 from typing import List
-class Solution:
-    def searchInsert(self, nums: List[int], target: int) -> int:
-        if not nums: return 0
-        n = len(nums)
-        left,right = 0,n-1
-        while left<= right:
-            mid = (left+right)>>1
-            if nums[mid] == target:
-                return mid
-            elif nums[mid]>target:
-                right = mid - 1
-            else:
-                left = mid + 1
-        return left
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
 
-solution = Solution()
-nums = [1,3]
-result = solution.searchInsert(nums,2)
-print(result)
+class Solution:
+    # 复制简单链表
+    def copyList(self, head: 'Node') -> 'Node':
+        if not head:return Node
+        cur = head
+        dum = pre = Node(0)
+        while cur:
+            node = Node(cur.val)
+            pre.next = node
+            cur = cur.next
+            pre = node
+        return dum.next
+    # 复制复杂链表
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        if not head : return None
+        dic = {}
+        cur = head
+        while cur:
+            dic[cur] = Node(cur.val)
+            cur = cur.next
+        cur = head
+        while cur:
+            dic[cur].next = dic.get(cur.next)
+            dic[cur].random = dic.get(cur.random)
+            cur = cur.next
+        return dic[head]
+
+
+
+
 
