@@ -25,7 +25,7 @@ class Solution:
             while stack and stack[-1]<nums2[i]:
                 result_dict[stack.pop()] = nums2[i]
             stack.append(nums2[i])
-        result_dict[nums2[len2-1]] = -1
+        result_dict[nums2[len2-1]] = -1  # 最后一位后面没有数，所以后面没有比他更大的数据，直接设置为-1
         return [result_dict.get(x,-1) for x in nums1]
 
 
