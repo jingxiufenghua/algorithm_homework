@@ -37,3 +37,40 @@ nums2 = [1,3,4,2]
 # nums2 = [1,2,3,4]
 result = solution.nextGreaterElement1(nums1,nums2)
 print(result)
+
+
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        n1,n2 = len(nums1),len(nums2)
+        dict = {}
+        stack = []
+        for i in range(n2):
+            while stack and nums2[stack[-1]]<nums2[i]:
+                dict[nums2[stack.pop()]] = nums2[i]
+            stack.append(i)
+        dict[nums2[n2-1]] = -1
+        return [dict.get(num,-1) for num in nums1]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

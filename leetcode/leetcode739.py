@@ -14,3 +14,17 @@ solution = Solution()
 temperatures = [73, 74, 75, 71, 69, 72, 76, 73]
 result = solution.dailyTemperatures(temperatures)
 print(result)
+
+
+class Solution:
+    def dailyTemperatures(self, T: List[int]) -> List[int]:
+        if not T:return []
+        stack = []
+        n = len(T)
+        res = [0]*n
+        for i in range(n):
+            while stack and T[stack[-1]]<T[i]:
+                cur = stack.pop()
+                res[cur] = i-cur
+            stack.append(i)
+        return res

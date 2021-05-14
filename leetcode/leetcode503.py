@@ -41,3 +41,18 @@ solution = Solution()
 nums = [1,2,1]
 result = solution.nextGreaterElements(nums)
 print(result)
+
+
+class Solution:
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        if not nums: return []
+        new_nums = nums*2
+        n = len(nums)
+        stack = [(0,new_nums[0])]
+        res = [-1]*2*n
+        for i in range(1,n*2):
+            while stack and stack[-1][1]<new_nums[i]:
+                origin_index,_ = stack.pop()
+                res[origin_index] =  new_nums[i]
+            stack.append((i,new_nums[i]))
+        return res[:n]
