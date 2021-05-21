@@ -54,3 +54,22 @@ result = sub_sum(nums)
 print(result)
 print(123>>1)
 
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        if max(nums)<0: return max(nums)
+        sub_sum,max_sum = 0,0
+        for i in range(n):
+            sub_sum = max(0,sub_sum+nums[i])
+            max_sum = max(max_sum,sub_sum)
+        return max_sum
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        if max(nums)<0: return max(nums)
+        sub_sum,max_sum = 0,0
+        for i in range(n):
+            sub_sum = max(0,sub_sum+nums[i])
+            max_sum = max(max_sum,sub_sum)
+        return max_sum

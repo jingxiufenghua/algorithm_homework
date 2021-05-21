@@ -82,7 +82,50 @@ class Solution:
         dfs(0)
         return res
 solution = Solution()
-nums = [1,1,2]
+nums = [1,2,3,2,2]
 result = solution.permuteUnique(nums)
 print(result)
+
+
+
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        def dfs(x):
+            if x== n-1:
+                res.append(nums[:])
+                return
+            dict = set()
+            for i in range(x,n):
+                if nums[i] in dict:continue
+                dict.add(nums[i])
+                nums[i],nums[x] = nums[x],nums[i]
+                dfs(x+1)
+                nums[x],nums[i] = nums[i],nums[x]
+        dfs(0)
+        res = []
+        return res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

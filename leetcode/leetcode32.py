@@ -1,19 +1,25 @@
-# 剑指 Offer 32 - I. 从上到下打印二叉树
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+'''
+@Project ：algorithm_homework 
+@File    ：leetcode32.py
+@IDE     ：PyCharm 
+@Author  ：无名
+@Date    ：2021/5/16 23:32 
+'''
 from typing import List
 class Solution:
-    def levelOrder(self, root: TreeNode) -> List[int]:
-        def dfs(root,i):
-            if not root: return None
-            if i == len(res): res.append([])
-            res[i].append(root.val)
-            dfs(root.left,i+1)
-            dfs(root.right,i+1)
-        res = []
-        dfs(root,0)
-        return [j for nums in res for j in nums]
+    def longestValidParentheses(self, s: str) -> int:
+        n = len(s)
+        if n==0:return 0
+        dp = [0]*n
+        for i in range(n):
+            if s[i] == ")" and i-dp[i-1]-1>=0 and s[i-dp[i-1]-1]=="(":
+                dp[i] = dp[i-1] + dp[i-dp[i-1]-2]+2
+        return max(dp)
+solution = Solution()
+s = "()"
+result = solution.longestValidParentheses(s)
+print(result)
+
+
