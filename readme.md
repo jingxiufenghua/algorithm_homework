@@ -28,6 +28,44 @@ fighting！！！
 作者：fuxuemingzhu
 来源：力扣（LeetCode）
 
+下面贴出labuladong写的关于滑动窗口的算法框架：
+    /* 滑动窗口算法框架 */
+
+    void slidingWindow(string s, string t) {
+        unordered_map<char, int> need, window;
+        for (char c : t) need[c]++;
+
+        int left = 0, right = 0;
+        int valid = 0; 
+        while (right < s.size()) {
+            // c 是将移入窗口的字符
+            char c = s[right];
+            // 右移窗口
+            right++;
+            // 进行窗口内数据的一系列更新
+            ...
+
+            /*** debug 输出的位置 ***/
+            printf("window: [%d, %d)\n", left, right);
+            /********************/
+
+            // 判断左侧窗口是否要收缩
+            while (window needs shrink) {
+                // d 是将移出窗口的字符
+                char d = s[left];
+                // 左移窗口
+                left++;
+                // 进行窗口内数据的一系列更新
+                ...
+            }
+        }
+    }
+
+作者：applepieiris
+链接：https://leetcode-cn.com/problems/minimum-window-substring/solution/python3-gen-ju-labuladongkuang-jia-xie-t-045r/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
 4.22日
 
 304\307\363 一起做 前缀和
@@ -161,4 +199,21 @@ https://www.5axxw.com/wiki/content/5nj8w4
 
 315题放弃，竞赛难题
 
+5.26 
+
+76题 滑动窗口
+
+
+位运算 
+190 461
+
+二分查找
+33 搜索排序数组
+852 1095 153 154 
+
+堆
+347 215
+
+快排
+215 75 
 

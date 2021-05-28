@@ -82,3 +82,74 @@ class Solution:
         return ancestor
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        def dfs(root,target,path):
+            if not root: return
+            path.append(root)
+            if root.val == target.val:
+                return path
+            if root.val<target.val:
+                dfs(root.right,target,path)
+            else:
+                dfs(root.left,target,path)
+            return path
+
+        p_path = dfs(root,p,[])
+        q_path = dfs(root,q,[])
+        ans = None
+        for k,v in zip(p_path,q_path):
+            if k.val == v.val:
+                ans = k
+        return ans
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        ancestor = root
+        while True:
+            if p.val<ancestor.val and q.val<ancestor.val:
+                ancestor = ancestor.left
+            elif p.val>ancestor.val and q.val>ancestor.val:
+                ancestor = ancestor.right
+            else:
+                break
+        return ancestor
+
+
+
+
+
+
+
+
