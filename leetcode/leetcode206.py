@@ -70,6 +70,34 @@ class Solution:
 
 
 
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        if not head : return None
+        cur = head
+        temp = None
+        while cur:
+            save = cur.next
+            cur.next = temp
+            temp = cur
+            cur = save
+        return temp
+
+
+
+# 最强精简版
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        cur,prev = head,None
+        while cur:
+            cur.next,prev,cur = prev,cur,cur.next
+        return prev
+
+
+
+
+
+
+
 
 
 

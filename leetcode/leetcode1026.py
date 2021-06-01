@@ -81,8 +81,64 @@ class Solution:
         return self.max_value
 
 
-select *
-from
-(select *,row_number() over(partition by xxx order by xx desc) as n
-from xxxx) a
-where a.n<=3
+
+
+
+
+class Solution:
+    def maxAncestorDiff(self, root: TreeNode) -> int:
+        self.max_value = 0
+        def dfs(root,max_v,min_v):
+            if not root:
+                self.max_value = max(self.max_value,max_v-min_v)
+            else:
+                max_v = max(max_v,root.val)
+                min_v = min(min_v,root.val)
+                dfs(root.left,max_v,min_v)
+                dfs(root.right,max_v,min_v)
+        dfs(root,float("-inf"),float("inf"))
+        return self.max_value
+
+
+class Solution:
+    def maxAncestorDiff(self, root: TreeNode) -> int:
+        self.max_diff = 0
+        def dfs(root,max_v,min_v):
+            if not root:
+                self.max_diff = max(self.max_diff,max_v-min_v)
+            else:
+                max_v = max(max_v,root.val)
+                min_v = min(min_v,root.val)
+                dfs(root.left,max_v,min_v)
+                dfs(root.right,max_v,min_v)
+        dfs(root,float("-inf"),float("inf"))
+        return self.max_diff
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
