@@ -26,12 +26,13 @@ class Solution:
             pb = pb.next if pb else headA
         return pa
 
-
-
-
-
-
-
-
-
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        if not headB or not headA: return None
+        pa = headA
+        pb = headB
+        while pa != pb:
+            pa = pa.next if pa else headB
+            pb = pb.next if pb else headA
+        return pa
 

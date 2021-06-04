@@ -33,3 +33,37 @@ class Solution:
             root.left, root.right = self.mirrorTree(root.right), self.mirrorTree(root.left)
             return root
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution:
+    def mirrorTree(self, root: TreeNode) -> TreeNode:
+        if not root: return None
+        root.right,root.left = root.left,root.right
+        self.mirrorTree(root.left)
+        self.mirrorTree(root.right)
+        return root
